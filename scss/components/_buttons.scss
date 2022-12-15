@@ -1,4 +1,10 @@
 .btn-primary {
   background-color: $primary;
   border-color: $primary;
+  transition-duration: 0.4s;
+
+  &:hover {
+    background-color: $primary-hover;
+    border-color: $primary-hover;
+  }
 }

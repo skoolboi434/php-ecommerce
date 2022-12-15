@@ -70,40 +70,62 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-shopping-basket mr-5"></i> <span class="hidden-xs">
-                                  Cart<sup class="text-primary">(3)</sup>
-                                  <i class="fa fa-angle-down ml-5"></i>
-                              </span> </a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> 
+              <i class="fa fa-shopping-basket mr-5"></i> 
+              <span class="hidden-xs">Cart<sup class="text-primary"><?php echo $num_items_in_cart ?></sup>
+              <i class="fa fa-angle-down ml-5"></i>
+              </span> 
+            </a>
             <ul class="dropdown-menu cart w-250" role="menu">
               <li>
-                <div class="cart-items">
-                  <ol class="items">
-                    <li>
-                      <a href="#" class="product-image"></a>
-                      <div class="product-details">
-                        <div class="close-icon"> <a href="#"><i class="fa fa-close"></i></a> </div>
-                        <p class="product-name"> <a href="#">Sumi9xm@gmail.com</a> </p> <strong>1</strong> x <span class="price text-primary">$59.99</span> </div>
-                      <!-- end product-details -->
-                    </li>
-                    <!-- end item -->
-                    <li>
-                      <a href="#" class="product-image">  </a>
-                      <div class="product-details">
-                        <div class="close-icon"> <a href="#"><i class="fa fa-close"></i></a> </div>
-                        <p class="product-name"> <a href="#">Lorem Ipsum dolor sit</a> </p> <strong>1</strong> x <span class="price text-primary">$39.99</span> </div>
-                      <!-- end product-details -->
-                    </li>
-                    <!-- end item -->
-                    <li>
-                      <a href="#" class="product-image"> </a>
-                      <div class="product-details">
-                        <div class="close-icon"> <a href="#"><i class="fa fa-close"></i></a> </div>
-                        <p class="product-name"> <a href="#">Lorem Ipsum dolor sit</a> </p> <strong>1</strong> x <span class="price text-primary">$29.99</span> </div>
-                      <!-- end product-details -->
-                    </li>
-                    <!-- end item -->
-                  </ol>
-                </div>
+                <form action="index.php?page=cart" method="post">
+                  <table>
+                      <thead>
+                          <tr>
+                              <td colspan="2">Product</td>
+                              <td>Price</td>
+                              <td>Quantity</td>
+                              <td>Total</td>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <?php if (empty($products)): ?>
+                          <tr>
+                              <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
+                          </tr>
+                          <?php else: ?>
+                          <?php foreach ($products as $product): ?>
+                          <tr>
+                              <td class="img">
+                                  <a href="index.php?page=product&id=<?=$product['id']?>">
+                                      <img src="<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
+                                  </a>
+                              </td>
+                              <td>
+                                  <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
+                                  <br>
+                                  <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
+                              </td>
+                              <td class="price">&dollar;<?=$product['price']?></td>
+                              <td class="quantity">
+                                  <input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
+                              </td>
+                              <td class="price">&dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
+                          </tr>
+                          <?php endforeach; ?>
+                          <?php endif; ?>
+                      </tbody>
+                  </table>
+                  <div class="subtotal">
+                      <span class="text">Subtotal</span>
+                      <span class="price">&dollar;<?=$subtotal?></span>
+                  </div>
+                  <div class="buttons">
+                      <input type="submit" value="Update" name="update">
+                      <input type="submit" value="Place Order" name="placeorder">
+                  </div>
+              </form>
+
               </li>
               <li>
                 <div class="cart-footer"> <a href="#" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View
@@ -216,10 +238,10 @@
       <div class="collapse navbar-collapse p-md-0" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Shop</a>
+            <a class="nav-link" href="index.php?page=products">Products</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Blog</a>
