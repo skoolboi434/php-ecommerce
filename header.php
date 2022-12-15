@@ -128,7 +128,7 @@
 
               </li>
               <li>
-                <div class="cart-footer"> <a href="#" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View
+                <div class="cart-footer"> <a href="index.php?page=cart" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View
             Cart</a> <a href="#" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a> </div>
               </li>
             </ul>
