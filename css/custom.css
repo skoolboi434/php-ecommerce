@@ -213,6 +213,16 @@
   border-top: solid 2px #0cd4d2;
 }
 
+.btn-primary {
+  background-color: #0cd4d2;
+  border-color: #0cd4d2;
+}
+
+.product-bottom-content .heading {
+  font-size: 36px;
+  font-weight: 700;
+}
+
 .mr-5 {
   margin-right: 5px;
 }
