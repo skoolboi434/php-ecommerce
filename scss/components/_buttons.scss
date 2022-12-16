@@ -8,3 +8,33 @@
     border-color: $primary-hover;
   }
 }
+
+.btn-secondary {
+  background-color: $secondary;
+  border-color: $secondary;
+  transition-duration: 0.4s;
+
+  &:hover {
+    background-color: $third;
+    border-color: $third;
+  }
+}
+
+.btn-cta {
+  display: flex;
+  background: linear-gradient(90deg, rgba(212, 12, 14, 1) 0%, rgba(247, 105, 106, 1) 100%);
+  width: 100%;
+  min-height: 185px;
+  color: $white;
+  text-transform: uppercase;
+  padding: 15px;
+  align-items: center;
+  &:hover {
+    text-decoration: none;
+    color: $white;
+  }
+  .heading {
+    margin: 0;
+    font-size: 30px;
+  }
+}

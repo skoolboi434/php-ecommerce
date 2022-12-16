@@ -1,0 +1,45 @@
+.cart-card {
+  display: flex;
+  background-color: $white;
+  box-shadow: $shadow;
+  border-radius: 5px;
+
+  &:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+  .left-side {
+    background-size: cover;
+    background-position: center;
+    min-height: 220px;
+    width: 100%;
+  }
+
+  .right-side {
+    padding: 20px;
+    .heading {
+      margin: 0 0 30px 0;
+    }
+
+    .quantity-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+
+      .quantity {
+        display: flex;
+
+        h4 {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.subtotal-container {
+  background-color: $white;
+  width: 100%;
+  padding: 20px;
+  box-shadow: $shadow;
+  border-radius: 5px;
+}

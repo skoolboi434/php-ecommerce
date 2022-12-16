@@ -1,10 +1,32 @@
 <?php include 'header.php'?>
 <?php
 // Get the 4 most recently added products
-$stmt = $pdo->prepare('SELECT * FROM products ORDER BY created_at');
+$stmt = $pdo->prepare('SELECT * FROM products ORDER BY created_at DESC');
 $stmt->execute();
 $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Get category names
+$cat_names = $pdo->prepare('SELECT cat_name FROM categories');
+$cat_names->execute();
+
+$cat_name_list = $cat_names->fetchAll(PDO::FETCH_ASSOC);
+
+// print_r($cat_name_list);
 ?>
+
+<div class="cta-container mb-5">
+  <div class="container">
+    <div class="row">
+      <?php foreach ($cat_name_list as $cat): ?>
+      <div class="col-sm-6 col-md-4">
+        <a class="btn-cta" href="index.php?page=category&category=<?=$cat['cat_name']?>">
+          <h3 class="heading"><?=$cat['cat_name']?></h3>
+        </a>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="products">
@@ -14,7 +36,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <div class="product-card">
             <div class="product-info mb-3">
               <div class="feat-img">
-                <img src="<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
+                <img src="imgs/<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
               </div>
               <h5 class="title"><?=$product['name']?></h5>
               

@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
   <div class="row">
     <div class="col-md-6">
       <div class="product-gallery">
-        <img src="<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
+        <img src="imgs/<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
       </div>
     </div>
     <div class="col-md-6">
@@ -53,9 +53,12 @@ if (isset($_GET['id'])) {
   </div>
   <div class="product-bottom-content">
     <div class="descr-container mb-5">
+      <?php if($product['info']) :?>
       <h2 class="heading">Description</h2>
       <p class="description"><?php echo htmlspecialchars($product['info']); ?></p>
+      <?php endif; ?>
     </div>
+    <?php if($product['features']) :?>
     <div class="features-container">
       <h2 class="heading">Features</h2>
       <ul class="feat-list">
@@ -66,6 +69,7 @@ if (isset($_GET['id'])) {
         <?php endforeach; ?>
       </ul>
     </div>
+    <?php endif; ?>
   </div>
   <?php else : ?>
     <h1 class="error">Product does not exist.</h1>

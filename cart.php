@@ -90,9 +90,9 @@ if ($products_in_cart) {
         <?php if (empty($products)): ?>
             <h3>You have no products added in your Shopping Cart</h3>
         <?php else : ?>
-        <?php foreach ($products as $product): ?>
         <div class="row">
             <div class="col-sm-12 col-md-8">
+            <?php foreach ($products as $product): ?>
                 <div class="cart-card">
                     <div class="left-side" style="background-image: url(imgs/<?php echo htmlspecialchars($product['feat_img']); ?>);"></div>
                     <div class="right-side">
@@ -108,8 +108,8 @@ if ($products_in_cart) {
                         </div>
                     </div>
                 </div>
-            </div>
             <?php endforeach; ?>
+            </div>
             <?php endif; ?>
             <div class="col-sm-12 col-md-4">
                 <div class="subtotal-container">
@@ -124,7 +124,6 @@ if ($products_in_cart) {
                 </div>
             </div>
         </div>
-
     </form>
 </div>
 
