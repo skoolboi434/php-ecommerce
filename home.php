@@ -1,7 +1,7 @@
 <?php include 'header.php'?>
 <?php
 // Get the 4 most recently added products
-$stmt = $pdo->prepare('SELECT * FROM products ORDER BY created_at DESC');
+$stmt = $pdo->prepare('SELECT products.feat_img, products.name, products.price FROM products ORDER BY created_at DESC');
 $stmt->execute();
 $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -17,13 +17,23 @@ $cat_name_list = $cat_names->fetchAll(PDO::FETCH_ASSOC);
 <div class="cta-container mb-5">
   <div class="container">
     <div class="row">
-      <?php foreach ($cat_name_list as $cat): ?>
       <div class="col-sm-6 col-md-4">
-        <a class="btn-cta" href="index.php?page=category&category=<?=$cat['cat_name']?>">
-          <h3 class="heading"><?=$cat['cat_name']?></h3>
+        <a class="btn-cta" href="index.php?page=category-controllers&category=controllers">
+          <h3 class="heading">Controllers &amp; Interfaces</h3>
         </a>
       </div>
-      <?php endforeach; ?>
+
+      <div class="col-sm-6 col-md-4">
+        <a class="btn-cta" href="index.php?page=category-turntables&category=turntables">
+          <h3 class="heading">Turntables</h3>
+        </a>
+      </div>
+
+      <div class="col-sm-6 col-md-4">
+        <a class="btn-cta" href="index.php?page=category-mixers&category=mixers">
+          <h3 class="heading">Mixers</h3>
+        </a>
+      </div>
     </div>
   </div>
 </div>

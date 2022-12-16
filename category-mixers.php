@@ -6,7 +6,7 @@ $num_products_on_each_page = 24;
 // The current page, in the URL this will appear as index.php?page=products&p=1, index.php?page=products&p=2, etc...
 $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
 // Select products ordered by the date added
-$stmt = $pdo->prepare('SELECT * FROM products ORDER BY created_at DESC');
+$stmt = $pdo->query('SELECT * FROM products as p WHERE p.cat_id = 3');
 // bindValue will allow us to use integer in the SQL statement, we need to use for LIMIT
 $stmt->bindValue(1, ($current_page - 1) * $num_products_on_each_page, PDO::PARAM_INT);
 $stmt->bindValue(2, $num_products_on_each_page, PDO::PARAM_INT);
@@ -17,12 +17,14 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // print_r($products);
 
 // Get the total number of products
-$total_products = $pdo->query('SELECT * FROM products, categories WHERE products.cat_id = categories.cat_id')->rowCount();
+$total_products = $pdo->query('SELECT * FROM products as p WHERE p.cat_id = 3')->rowCount();
 ?>
 
-
 <div class="products container">
-  <h1>Products</h1>
+  <h1>Category: Turntables</h1>
+  <?php if(!$products) : ?>
+    <h1>No Products Available.</h1>
+  <?php else : ?>
   <p><?=$total_products?> Products</p>
   <div class="products-wrapper row">
       <?php foreach ($products as $product): ?>
@@ -30,7 +32,7 @@ $total_products = $pdo->query('SELECT * FROM products, categories WHERE products
         <div class="product-card">
           <div class="product-info mb-3">
             <div class="feat-img">
-              <img src="<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
+              <img src="imgs/<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
             </div>
             <h5 class="title"><?=$product['name']?></h5>
             <h3 class="price">&dollar;<?=$product['price']?></h3>
@@ -50,6 +52,7 @@ $total_products = $pdo->query('SELECT * FROM products, categories WHERE products
       <a href="index.php?page=products&p=<?=$current_page+1?>">Next</a>
       <?php endif; ?>
   </div>
+  <?php endif; ?>
 </div>
 
 <?php include 'footer.php'; ?>
