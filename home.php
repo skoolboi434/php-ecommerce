@@ -38,8 +38,12 @@ $cat_name_list = $cat_names->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </div>
 
-<div class="container">
+<div class="container mb-3">
   <div class="products">
+    <div class="heading-container text-center">
+      <h3 class="heading">Featured Products</h3>
+      <hr>
+    </div>
     <div class="row">
       <?php foreach ($recently_added_products as $product): ?>
         <div class="col-sm-6 col-md-3">
