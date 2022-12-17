@@ -15,213 +15,101 @@
 </head>
 <body>
 
-<!-- Top Bar -->
+<?php 
+        
+  $search = $_POST['search'];
+
+  $servername = "localhost";
+  $username = "admin";
+  $password = "password1234";
+  $db = "ecommerce";
+
+  $conn = new mysqli($servername, $username, $password, $db);
+
+  if($conn->connect_error) {
+    die("Connection failed: ". $conn->connection_error);
+  }
+
+  $sql = "SELECT * FROM products WHERE name LIKE '%$search%'";
+
+  $result = $conn->query($sql);
+
   
-  <nav class="topbar">
-    <div class="container">
-      <div class="topbar-container">
-        <ul class="list-inline hidden-sm hidden-xs">
-          <li><span class="text-primary">Have a question? </span> Call +120 558 7885</li>
-        </ul>
-        <ul class="topbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-usd mr-5"></i>USD<i class="fa fa-angle-down ml-5"></i>
-            </a>
-            <ul class="dropdown-menu w-100" role="menu">
-              <li><a href="#"><i class="fa fa-eur mr-5"></i>EUR</a>
-              </li>
-              <li class=""><a href="#"><i class="fa fa-usd mr-5"></i>USD</a>
-              </li>
-              <li><a href="#"><i class="fa fa-gbp mr-5"></i>GBP</a>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <span class="hidden-xs"> French <i class="fa fa-angle-down ml-5"></i></span> </a>
-            <ul class="dropdown-menu w-100" role="menu">
-              <li>
-                <a href="#">English</a>
-              </li>
-              <li class="">
-                <a href="#">French</a>
-              </li>
-              <li>
-                <a href="#">German</a>
-              </li>
-              <li>
-                <a href="#">Spain</a>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> <i class="fa fa-user mr-5"></i><span class="hidden-xs">My Account<i class="fa fa-angle-down ml-5"></i></span> </a>
-            <ul class="dropdown-menu w-150" role="menu">
-              <li><a href="login.html">Login</a>
-              </li>
-              <li><a href="register.html">Create Account</a>
-              </li>
-              <li class="divider"></li>
-              <li><a href="wishlist.html">Wishlist (5)</a>
-              </li>
-              <li><a href="cart.html">My Cart</a>
-              </li>
-              <li><a href="checkout.html">Checkout</a>
-              </li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false"> 
-              <i class="fa fa-shopping-basket mr-5"></i> 
-              <span class="hidden-xs">Cart<sup class="text-primary"><?php echo $num_items_in_cart ?></sup>
-              <i class="fa fa-angle-down ml-5"></i>
-              </span> 
-            </a>
-            <ul class="dropdown-menu cart w-250" role="menu">
-              <li>
-                <form action="index.php?page=cart" method="post">
-                  <table>
-                      <thead>
-                          <tr>
-                              <td colspan="2">Product</td>
-                              <td>Price</td>
-                              <td>Quantity</td>
-                              <td>Total</td>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <?php if (empty($products)): ?>
-                          <tr>
-                              <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
-                          </tr>
-                          <?php else: ?>
-                          <?php foreach ($products as $product): ?>
-                          <tr>
-                              <td class="img">
-                                  <a href="index.php?page=product&id=<?=$product['id']?>">
-                                      <img src="<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
-                                  </a>
-                              </td>
-                              <td>
-                                  <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
-                                  <br>
-                                  <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
-                              </td>
-                              <td class="price">&dollar;<?=$product['price']?></td>
-                              <td class="quantity">
-                                  <input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
-                              </td>
-                              <td class="price">&dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
-                          </tr>
-                          <?php endforeach; ?>
-                          <?php endif; ?>
-                      </tbody>
-                  </table>
-                  <div class="subtotal">
-                      <span class="text">Subtotal</span>
-                      <span class="price">&dollar;<?=$subtotal?></span>
-                  </div>
-                  <div class="buttons">
-                      <input type="submit" value="Update" name="update">
-                      <input type="submit" value="Place Order" name="placeorder">
-                  </div>
-              </form>
+?> 
 
-              </li>
-              <li>
-                <div class="cart-footer"> <a href="index.php?page=cart" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View
-            Cart</a> <a href="#" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a> </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+
+<header class="main-header">
+  <div class="top-contact-bar">
+    <div class="phone-container">
+      <span class="phone"><i class="fa-solid fa-phone"></i> (00)0000-0000</span>
     </div>
-  </nav>
+    <div class="social-container">
+      <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div> <!-- End Top Contact Bar -->
 
-  <!-- End Top Bar -->
-
-  <!-- Middle Top Bar -->
-
-  <div class="middlebar">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 vertical-align text-left hidden-xs">
-          <a href="javascript:void(0);">
-            
-          </a>
-        </div>
-
-        <?php 
-        
-        $search = $_POST['search'];
-
-        $servername = "localhost";
-        $username = "admin";
-        $password = "password1234";
-        $db = "ecommerce";
-
-        $conn = new mysqli($servername, $username, $password, $db);
-
-        if($conn->connect_error) {
-          die("Connection failed: ". $conn->connection_error);
-        }
-
-        $sql = "SELECT * FROM products WHERE name LIKE '%$search%'";
-
-        $result = $conn->query($sql);
-        
-        ?> 
-
-        
-
-        <div class="col-sm-7 vertical-align text-center">
-          <form action="index.php?page=search" method="POST">
-            <div class="row grid-space-1">
-              <div class="col-sm-9">
-                <input type="text" name="search" class="form-control input-lg" placeholder="Search">
-              </div>
-
-              <div class="col-sm-3">
-                <input type="submit" class="btn btn-default btn-block btn-lg" value="Search">
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <div class="col-sm-2 vertical-align header-items hidden-xs">
-          <div class="header-item mr-5">
-            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Wishlist"> <i class="fa fa-heart"></i> <sub>32</sub> </a>
-          </div>
-          <div class="header-item">
-            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare"> <i class="fa fa-refresh"></i> <sub>2</sub> </a>
-          </div>
-        </div>
+  <div class="container">
+    <div class="middle-container">
+      <div class="logo-container">
+        <a href="index.php">
+          <strong class="logo">
+            <i class="fa-solid fa-record-vinyl"></i>
+          </strong>
+        </a>
       </div>
+      <label class="open-search" for="open-search">
+        <i class="fa fa-search"></i>
+        <input class="input-open-search" id="open-search" type="checkbox" name="menu" />
+        <form class="search-container" action="index.php?page=search" method="POST">
+          <button class="button-search"><i class="fas fa-search"></i></button>
+          <input type="text" placeholder="What are you looking for?" class="input-search" name="search"/>
+          </form>
+      </label> <!-- End Search Bar -->
+      <nav class="nav-content">
+        <ul class="nav-content-list">
+          <li class="nav-content-item account-login">
+            <label class="open-menu-login-account" for="open-menu-login-account">
+
+              <input class="input-menu" id="open-menu-login-account" type="checkbox" name="menu" />
+
+              <i class="fas fa-user-circle"></i><span class="login-text">Hello, Sign in <strong>Create Account</strong></span> <span class="item-arrow"></span>
+
+              <!-- submenu -->
+              <ul class="login-list">
+                <li class="login-list-item"><a href="https://www.cupcom.com.br/">My account</a></li>
+                <li class="login-list-item"><a href="https://www.cupcom.com.br/">Create account</a></li>
+                <li class="login-list-item"><a href="https://www.cupcom.com.br/">logout</a></li>
+                </label>
+              </ul>
+          </li>
+          <li class="nav-content-item"><a class="nav-content-link" href="https://www.cupcom.com.br/"><i class="fas fa-heart"></i></a></li>
+          <li class="nav-content-item">
+            <a class="nav-content-link" href="https://www.cupcom.com.br/">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count"><?php echo $num_items_in_cart ?></span>
+            </a>
+          </li>
+          <!-- call to action -->
+        </ul>
+      </nav>
     </div>
   </div>
 
-  <!-- End Middle Top Bar -->
-
-  <nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light">
+  <nav class="nav-container">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse p-md-0" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?page=products">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+      <div class="menu">
+        <a href="index.php" class="is-active">Home</a>
+        <a href="index.php?page=products">Products</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
       </div>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
+</header>
