@@ -151,11 +151,34 @@
           </a>
         </div>
 
+        <?php 
+        
+        $search = $_POST['search'];
+
+        $servername = "localhost";
+        $username = "admin";
+        $password = "password1234";
+        $db = "ecommerce";
+
+        $conn = new mysqli($servername, $username, $password, $db);
+
+        if($conn->connect_error) {
+          die("Connection failed: ". $conn->connection_error);
+        }
+
+        $sql = "SELECT * FROM products WHERE name LIKE '%$search%'";
+
+        $result = $conn->query($sql);
+        
+        ?> 
+
+        
+
         <div class="col-sm-7 vertical-align text-center">
-          <form action="">
+          <form action="index.php?page=phpSearch" method="POST">
             <div class="row grid-space-1">
               <div class="col-sm-6">
-                <input type="text" name="keyword" class="form-control input-lg" placeholder="Search">
+                <input type="text" name="search" class="form-control input-lg" placeholder="Search">
               </div>
 
               <div class="col-sm-3">

@@ -12,6 +12,10 @@ $cat_names->execute();
 $cat_name_list = $cat_names->fetchAll(PDO::FETCH_ASSOC);
 
 // print_r($cat_name_list);
+
+
+
+
 ?>
 
 <div class="cta-container mb-5">
