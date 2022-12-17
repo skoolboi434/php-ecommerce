@@ -1,7 +1,7 @@
 <?php include 'header.php'?>
 <?php
 // Get the 4 most recently added products
-$stmt = $pdo->prepare('SELECT products.feat_img, products.name, products.price FROM products ORDER BY created_at DESC');
+$stmt = $pdo->prepare('SELECT products.id, products.feat_img, products.name, products.price FROM products ORDER BY created_at DESC');
 $stmt->execute();
 $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -11,18 +11,16 @@ $cat_names->execute();
 
 $cat_name_list = $cat_names->fetchAll(PDO::FETCH_ASSOC);
 
-// print_r($cat_name_list);
-
-
-
+// print_r($recently_added_products);
 
 ?>
+
 
 <div class="cta-container mb-5">
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-md-4">
-        <a class="btn-cta" href="index.php?page=category-controllers&category=controllers">
+        <a class="btn-cta" href="index.php?page=category-controllers&category=controllers" name="controllers">
           <h3 class="heading">Controllers &amp; Interfaces</h3>
         </a>
       </div>

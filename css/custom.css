@@ -315,6 +315,10 @@
   color: #fff;
 }
 
+.product-card {
+  padding: 20px 0;
+}
+
 .product-top-content #more-features {
   color: #d40c0e;
 }

@@ -175,61 +175,10 @@
         
 
         <div class="col-sm-7 vertical-align text-center">
-          <form action="index.php?page=phpSearch" method="POST">
+          <form action="index.php?page=search" method="POST">
             <div class="row grid-space-1">
-              <div class="col-sm-6">
+              <div class="col-sm-9">
                 <input type="text" name="search" class="form-control input-lg" placeholder="Search">
-              </div>
-
-              <div class="col-sm-3">
-                <!-- <select class="form-control input-lg" name="category">
-                  <option value="all">All Categories</option>
-                  <optgroup label="Mens">
-                    <option value="shirts">Shirts</option>
-                    <option value="coats-jackets">Coats & Jackets</option>
-                    <option value="underwear">Underwear</option>
-                    <option value="sunglasses">Sunglasses</option>
-                    <option value="socks">Socks</option>
-                    <option value="belts">Belts</option>
-                  </optgroup>
-                  <optgroup label="Womens">
-                    <option value="bresses">Bresses</option>
-                    <option value="t-shirts">T-shirts</option>
-                    <option value="skirts">Skirts</option>
-                    <option value="jeans">Jeans</option>
-                    <option value="pullover">Pullover</option>
-                  </optgroup>
-                  <option value="kids">Kids</option>
-                  <option value="fashion">Fashion</option>
-                  <optgroup label="Sportwear">
-                    <option value="shoes">Shoes</option>
-                    <option value="bags">Bags</option>
-                    <option value="pants">Pants</option>
-                    <option value="swimwear">Swimwear</option>
-                    <option value="bicycles">Bicycles</option>
-                  </optgroup>
-                  <option value="bags">Bags</option>
-                  <option value="shoes">Shoes</option>
-                  <option value="hoseholds">HoseHolds</option>
-                  <optgroup label="Technology">
-                    <option value="tv">TV</option>
-                    <option value="camera">Camera</option>
-                    <option value="speakers">Speakers</option>
-                    <option value="mobile">Mobile</option>
-                    <option value="pc">PC</option>
-                  </optgroup>
-                </select> -->
-                <select class="form-control input-lg" id="exampleFormControlSelect1">
-                  <option value="all">All Categories</option>
-                  <optgroup label="Mens">
-                  <option value="shirts">Shirts</option>
-                  <option value="coats-jackets">Coats & Jackets</option>
-                  <option value="underwear">Underwear</option>
-                  <option value="sunglasses">Sunglasses</option>
-                  <option value="socks">Socks</option>
-                  <option value="belts">Belts</option>
-                </optgroup>
-                </select>
               </div>
 
               <div class="col-sm-3">
