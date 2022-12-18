@@ -23,10 +23,10 @@ $total_products = $pdo->query('SELECT * FROM products')->rowCount();
   <p><?=$total_products?> Products</p>
   <div class="products-wrapper row">
       <?php foreach ($products as $product): ?>
-      <div class="col-sm-6 col-md-3">
+      <div class="col-sm-12 col-md-3">
         <div class="product-card">
           <div class="product-info mb-3">
-            <div class="feat-img">
+            <div class="feat-img mb-3">
               <img src="imgs/<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
             </div>
             <h5 class="title"><?=$product['name']?></h5>

@@ -100,10 +100,10 @@
   <nav class="nav-container">
     <div class="container">
       <div class="menu">
-        <a href="index.php" class="is-active">Home</a>
-        <a href="index.php?page=products">Products</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a id="menu-item" href="index.php" class="is-active">Home</a>
+        <a id="menu-item" href="index.php?page=products">Products</a>
+        <a id="menu-item" href="#">About</a>
+        <a id="menu-item" href="#">Contact</a>
       </div>
       <button class="hamburger">
         <span></span>

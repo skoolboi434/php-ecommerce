@@ -19,19 +19,19 @@ $cat_name_list = $cat_names->fetchAll(PDO::FETCH_ASSOC);
 <div class="cta-container mt-5 mb-5">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-12 col-md-4 mb-sm-3">
         <a class="btn-cta" href="index.php?page=category-controllers&category=controllers" name="controllers">
           <h3 class="heading">Controllers &amp; Interfaces</h3>
         </a>
       </div>
 
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-12 col-md-4 mb-sm-3">
         <a class="btn-cta" href="index.php?page=category-turntables&category=turntables">
           <h3 class="heading">Turntables</h3>
         </a>
       </div>
 
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-12 col-md-4">
         <a class="btn-cta" href="index.php?page=category-mixers&category=mixers">
           <h3 class="heading">Mixers</h3>
         </a>

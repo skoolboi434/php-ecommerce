@@ -57,6 +57,11 @@
 //     });
 // })(jQuery, this);
 
+function menuToggle() {
+  var element = document.getElementById('menu-item');
+  element.classList.toggle('is-active');
+}
+
 const hamburger = document.querySelector('.hamburger');
 
 hamburger.addEventListener('click', function () {

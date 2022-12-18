@@ -41,6 +41,10 @@
   .footer-widgets {
     display: flex;
     justify-content: space-evenly;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
     .footer-widget {
       .heading {
         font-weight: 700;
