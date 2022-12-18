@@ -78,15 +78,15 @@
 
               <!-- submenu -->
               <ul class="login-list">
-                <li class="login-list-item"><a href="https://www.cupcom.com.br/">My account</a></li>
-                <li class="login-list-item"><a href="https://www.cupcom.com.br/">Create account</a></li>
-                <li class="login-list-item"><a href="https://www.cupcom.com.br/">logout</a></li>
+                <li class="login-list-item"><a href="#">My account</a></li>
+                <li class="login-list-item"><a href="#">Create account</a></li>
+                <li class="login-list-item"><a href="#">logout</a></li>
                 </label>
               </ul>
           </li>
-          <li class="nav-content-item"><a class="nav-content-link" href="https://www.cupcom.com.br/"><i class="fas fa-heart"></i></a></li>
+          <li class="nav-content-item"><a class="nav-content-link" href="#"><i class="fas fa-heart"></i></a></li>
           <li class="nav-content-item">
-            <a class="nav-content-link" href="https://www.cupcom.com.br/">
+            <a class="nav-content-link" href="index.php?page=cart">
               <i class="fas fa-shopping-cart"></i>
               <span class="cart-count"><?php echo $num_items_in_cart ?></span>
             </a>
