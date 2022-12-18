@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <?php include 'header.php'?>
-<div class="container">
+<div class="container pt-5">
   <?php if($product) : ?>
   <div class="row">
     <div class="col-md-6">
