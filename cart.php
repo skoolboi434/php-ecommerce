@@ -91,38 +91,52 @@ if ($products_in_cart) {
             <h3>You have no products added in your Shopping Cart</h3>
         <?php else : ?>
         <div class="row">
-            <div class="col-sm-12 col-md-8">
-            <?php foreach ($products as $product): ?>
-                <div class="cart-card">
-                    <div class="left-side" style="background-image: url(imgs/<?php echo htmlspecialchars($product['feat_img']); ?>);"></div>
-                    <div class="right-side">
-                        <h3 class="heading"><?=$product['name']?></h3>
-                        <h4 class="price">Price: &dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></h4>
-                        <div class="quantity-container">
-                            <div class="quantity">
-                                <h4>Quantity</h4>
-                                <input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
-                            </div>
-
-                            <a class="btn btn-secondary" href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
-                        </div>
-                    </div>
+            <div class="col-sm-12 col-md-9">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">Product Iamge</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($products as $product): ?>
+                            <tr class="cart-item">
+                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+                                <td><img src="imgs/<?php echo htmlspecialchars($product['feat_img']); ?>" class="cart-img img-fluid"></td>
+                                <td><?=$product['name']?></td>
+                                
+                                <td>&dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
+                                <td><input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required></td>
+                                <td><a class="btn btn-secondary" href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <tr>
+                            <th class="th-total text-right" colspan="4" scope="row">Sub-Total</th>
+                            <td class="td-total"><span class="price">&dollar;<?=$subtotal?></span></td>
+                        </tr>
+                        <tr>
+                            <th class="th-total text-right" colspan="4" scope="row">Shipping</th>
+                            <td class="td-total"><span>FREE</span></td>
+                        </tr>
+                        <tr>
+                            <th class="th-total text-right" colspan="4" scope="row">Total</th>
+                            <td class="td-total"><span class="price">&dollar;<?=$subtotal?></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-            <?php endforeach; ?>
+
+                <div class="buttons">
+                    <input class="btn btn-primary" type="submit" value="Update" name="update">
+                    <input class="btn btn-secondary" type="submit" value="Place Order" name="placeorder">
+                </div>
             </div>
             <?php endif; ?>
-            <div class="col-sm-12 col-md-4">
-                <div class="subtotal-container">
-                    <div class="subtotal">
-                        <span class="text">Subtotal</span>
-                        <span class="price">&dollar;<?=$subtotal?></span>
-                    </div>
-                    <div class="buttons">
-                        <input type="submit" value="Update" name="update">
-                        <input type="submit" value="Place Order" name="placeorder">
-                    </div>
-                </div>
-            </div>
         </div>
     </form>
 </div>
