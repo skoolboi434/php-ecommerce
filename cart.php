@@ -107,8 +107,8 @@ if ($products_in_cart) {
                             <?php foreach ($products as $product): ?>
                             <tr class="cart-item">
                                 <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-                                <td><img src="imgs/<?php echo htmlspecialchars($product['feat_img']); ?>" class="cart-img img-fluid"></td>
-                                <td><?=$product['name']?></td>
+                                <td><img src="imgs/<?php echo htmlspecialchars($product['product_image']); ?>" class="cart-img img-fluid"></td>
+                                <td><?=$product['product_name']?></td>
                                 
                                 <td>&dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
                                 <td><input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required></td>

@@ -29,7 +29,7 @@ $result = $conn->query($sql);
           <div class="product-card">
             <div class="product-info">
               <div class="feat-img">
-                <img src="imgs/<?php echo htmlspecialchars($row['feat_img']); ?>" alt="" class="img-fluid">
+                <img src="imgs/<?php echo htmlspecialchars($row['product_image']); ?>" alt="" class="img-fluid">
               </div>
               <h5 class="title"><?php echo $row['name']; ?></h5>
               <h3 class="price">&dollar;<?php echo $row['price']; ?></h3>

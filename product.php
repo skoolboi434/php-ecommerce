@@ -23,12 +23,12 @@ if (isset($_GET['id'])) {
   <div class="row">
     <div class="col-md-6">
       <div class="product-gallery">
-        <img src="imgs/<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
+        <img src="imgs/<?php echo htmlspecialchars($product['product_image']); ?>" alt="" class="img-fluid">
       </div>
     </div>
     <div class="col-md-6">
       <div class="product-top-content">
-        <h3 class="product-name"><?php echo htmlspecialchars($product['name']); ?></h3>
+        <h3 class="product-name"><?php echo htmlspecialchars($product['product_name']); ?></h3>
         <div class="sku-container ">
           <span class="small">Item #: <?php echo htmlspecialchars($product['item_num']); ?></span>
         </div>
