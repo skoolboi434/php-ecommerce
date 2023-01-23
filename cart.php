@@ -61,6 +61,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     exit;
 }
 
+
 // Check the session variable for products in cart
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
@@ -80,6 +81,8 @@ if ($products_in_cart) {
         $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']];
     }
 }
+
+
 ?>
 
 <?php include 'header.php'; ?>
@@ -96,7 +99,7 @@ if ($products_in_cart) {
                     <table class="table">
                         <thead>
                             <tr>
-                            <th scope="col">Product Iamge</th>
+                            <th scope="col">Product Image</th>
                             <th scope="col">Product Name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>

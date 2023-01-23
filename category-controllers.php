@@ -32,9 +32,9 @@ $total_products = $pdo->query('SELECT * FROM products as p WHERE p.cat_id = 1')-
         <div class="product-card">
           <div class="product-info mb-3">
             <div class="feat-img">
-              <img src="imgs/<?php echo htmlspecialchars($product['feat_img']); ?>" alt="" class="img-fluid">
+              <img src="imgs/<?php echo htmlspecialchars($product['product_image']); ?>" alt="" class="img-fluid">
             </div>
-            <h5 class="title"><?=$product['name']?></h5>
+            <h5 class="title"><?=$product['product_name']?></h5>
             <h3 class="price">&dollar;<?=$product['price']?></h3>
           </div>
           <div class="btn-container">
