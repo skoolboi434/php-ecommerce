@@ -23,14 +23,14 @@ if (isset($_GET['id'])) {
   <div class="row">
     <div class="col-md-6">
       <div class="product-gallery">
-        <img src="imgs/<?php echo htmlspecialchars($product['product_image']); ?>" alt="" class="img-fluid">
+        <img src="imgs/<?= ltrim($product['product_image']); ?>" alt="" class="img-fluid">
       </div>
     </div>
     <div class="col-md-6">
       <div class="product-top-content">
-        <h3 class="product-name"><?php echo htmlspecialchars($product['product_name']); ?></h3>
+        <h3 class="product-name"><?= ltrim($product['product_name']); ?></h3>
         <div class="sku-container ">
-          <span class="small">Item #: <?php echo htmlspecialchars($product['item_num']); ?></span>
+          <span class="small">Item #: <?=ltrim($product['item_num']); ?></span>
         </div>
           <ul class="tip-list">
             <?php foreach(explode(',', $product['top_list']) as $tl_item) : ?>
@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
             <?php endforeach; ?>
           </ul>
           <a href="#" id="more-features">More Features</a>
-          <h2 class="price">$<?php echo htmlspecialchars($product['price']); ?></h2>
+          <h2 class="price">$<?php echo ltrim($product['price']); ?></h2>
           <div class="form-container">
             <form action="index.php?page=cart" method="post">
               <input type="number" name="quantity" value="1" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
